@@ -1,0 +1,22 @@
+import { test, expect } from '@playwright/test';
+
+test("Open home page and verify title", async ({ page }) => {
+    await page.goto('https://the-internet.herokuapp.com/');
+    // await expect(page.getByRole('heading', { name: 'Welcome to the-internet' })).toBeVisible();
+    // await expect(page.getByRole('heading', { name: 'Available Examples' })).toBeVisible();
+
+    //   await page.goto('https://the-internet.herokuapp.com/');
+    await page.getByRole('link', { name: 'Key Presses' }).click();
+    await page.getByRole('heading', { name: 'Key Presses' }).click();
+    await page.getByText('Key presses are often used to').click();
+    await page.locator('#target').click();
+    await page.keyboard.press('A');
+    await page.getByText('You entered: A');
+    await page.keyboard.press('B');
+    await page.getByText('You entered: B').click();
+    await page.keyboard.press('Backspace');
+    await page.getByText('You entered: BACK_SPACE').click();
+    await page.keyboard.press('Enter')
+    await page.getByText('You entered: ENTER').click();
+});
+
