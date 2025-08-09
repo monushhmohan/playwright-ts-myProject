@@ -1,7 +1,9 @@
 import { test, expect } from '@playwright/test';
+import { OpenURL } from '../base/openURL';
 
 test("Open home page and verify title", async ({ page }) => {
-    await page.goto('https://the-internet.herokuapp.com/');
+    const bc = new OpenURL(page)
+    bc.navigateToURL();
     await page.getByRole('link', { name: 'Key Presses' }).click();
     await page.getByRole('heading', { name: 'Key Presses' }).click();
     await page.getByText('Key presses are often used to').click();

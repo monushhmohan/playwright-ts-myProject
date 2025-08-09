@@ -1,7 +1,9 @@
 import { test, expect } from '@playwright/test';
+import { OpenURL } from '../base/openURL';
 
 test('Dropdown test', async ({ page }) => {
-    await page.goto('https://the-internet.herokuapp.com');
+    const bc = new OpenURL(page)
+    bc.navigateToURL();
     await page.getByRole('link', { name: 'Dropdown' }).click();
     await expect(page.getByRole('heading', { name: 'Dropdown List' })).toBeVisible();
     await page.locator('#dropdown').selectOption('1');
