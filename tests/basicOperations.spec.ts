@@ -24,11 +24,17 @@ test("Print all the links", async ({ page }) => {
 }
 );
 test('Test submit forgot passwed form', async ({ page }) => {
-  const bc = new OpenURL(page);
-  await bc.navigateToURL();
-  await page.getByRole("link", { name: 'Forgot Password' }).click();
-  await page.getByLabel('E-mail').fill('Playwright');
-  await page.getByRole('button', { name: 'Retrieve password' }).click();
-  await expect(page.getByText('Internal Server Error')).toBeVisible(); 
+    const bc = new OpenURL(page);
+    await bc.navigateToURL();
+    await page.getByRole("link", { name: 'Forgot Password' }).click();
+    await page.getByLabel('E-mail').fill('Playwright');
+    await page.getByRole('button', { name: 'Retrieve password' }).click();
+    await expect(page.getByText('Internal Server Error')).toBeVisible();
+});
+
+test('test homepage snapshot', async ({ page }) => {
+    const bc = new OpenURL(page);
+    await bc.navigateToURL();
+    await expect(page).toHaveScreenshot('home.png', { fullPage: true });
 });
 
