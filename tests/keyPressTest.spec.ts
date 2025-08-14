@@ -6,8 +6,8 @@ test("Open home page and verify title", async ({ page }) => {
     const bc = new OpenURL(page)
     const landing = new LandingPage(page)
     
-    bc.navigateToURL();
-    landing.clickKeyPressesLink();
+    await bc.navigateToURL();
+    await landing.clickKeyPressesLink();
     await page.getByRole('heading', { name: 'Key Presses' }).click();
     await page.getByText('Key presses are often used to').click();
     await page.locator('#target').click();

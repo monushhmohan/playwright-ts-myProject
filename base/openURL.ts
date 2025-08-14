@@ -6,7 +6,7 @@ export class OpenURL {
 
   constructor(page) {
     this.page = page;
-    this.baseUrl = 'https://the-internet.herokuapp.com/'
+    this.baseUrl = 'https://the-internet.herokuapp.com'
   }
 
   async navigateToURL(path: string = "") {
